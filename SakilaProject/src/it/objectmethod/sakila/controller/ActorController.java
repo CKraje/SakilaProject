@@ -24,22 +24,17 @@ public class ActorController {
 	FilmDao filmDao;
 	
 	@RequestMapping("films-actors")
-	public String getActorsByFilm(ModelMap map,@RequestParam("filmId")int idFilm,
-			HttpServletRequest req) {
-		HttpSession session = req.getSession();
+	public String getActorsByFilm(ModelMap map,@RequestParam("filmId")int idFilm) {
 		List<Actor> actorList = actorDao.getActorsByFilm(idFilm);
-		session.setAttribute("sessionActorList", actorList);
 		map.addAttribute("actorList", actorList);
 		return "forward:/categories";
 	}
 	
 	@RequestMapping("actors-search")
-	public String getActorByLastName(ModelMap map,@RequestParam("actorLastName")String actorLastName,
-			HttpServletRequest req) {
-		HttpSession session = req.getSession();
+	public String getActorByLastName(ModelMap map,@RequestParam("actorLastName")String actorLastName
+			) {
 		List<Actor> actorList = actorDao.getActorsByLastName(actorLastName);
 		map.addAttribute("actorList", actorList);
-		session.setAttribute("sessionActorList", actorList);
-		return "genere-list";
+		return "films-actors";
 	}
 }

@@ -23,6 +23,6 @@ public class CategoryController {
 		HttpSession session = req.getSession();
 		List<Category> listcategoriesFilms= categoryDao.getAllCategories();
 		session.setAttribute("listaCategoriesFilms", listcategoriesFilms);
-		return "genere-list";
+		return "films-actors";
 	}
 }

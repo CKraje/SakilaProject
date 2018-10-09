@@ -17,7 +17,7 @@ public class FilmDaoImpl extends NamedParameterJdbcDaoSupport implements FilmDao
 			"			JOIN category as c  ON film_category.category_id=c.category_id " + 
 			"			WHERE c.name= :genere";
 
-	private String GET_FILMS_BY_ACTOR = "  SELECT f.film_id, f.title,f.description, e.first_name, e.last_name "
+	private String GET_FILMS_BY_ACTOR = "  SELECT f.film_id, f.title,f.description,f.release_year, e.first_name, e.last_name "
 			+ "FROM film AS f " + 
 			"  JOIN film_actor AS d ON d.film_id=f.film_id" + 
 			"  JOIN actor as e ON e.actor_id=d.actor_id "+
@@ -47,10 +47,12 @@ public class FilmDaoImpl extends NamedParameterJdbcDaoSupport implements FilmDao
 	@Override
 	public List<Film> getFilmsByName(String name) {
 		List<Film> listFilms=null;
+		if(/**name!=null ||*/ !(name.equals(""))) {
 		MapSqlParameterSource map = new MapSqlParameterSource();
 		map.addValue("name", name+"%");
 		BeanPropertyRowMapper<Film> rm = new BeanPropertyRowMapper<>(Film.class);
 		listFilms= getNamedParameterJdbcTemplate().query(GET_FILMS_BY_NAME,map, rm);
+		}
 		return listFilms;
 	}
 }

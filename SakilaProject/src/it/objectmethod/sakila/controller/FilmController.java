@@ -37,13 +37,13 @@ public class FilmController {
 	public String getFilmsByActor (ModelMap map,@RequestParam("actorId")int id) {
 		List<Film> filmList = filmDao.getFilmsByActor(id);
 		map.addAttribute("listaFilms", filmList);
-		return "genere-list";
+		return "films-actors";
 	}
 	
 	@RequestMapping("search-films")
 	public String getFilmsByName (ModelMap map,@RequestParam("film_Name")String filmName) {
 		List<Film> filmList = filmDao.getFilmsByName(filmName);
 		map.addAttribute("listaFilms", filmList);
-		return "genere-list";
+		return "films-actors";
 	}
 }

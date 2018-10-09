@@ -35,10 +35,10 @@
 	</c:if>
 	<c:if test="${!empty listaFilms }">
 	<table>
-	<tr><td> Film Name</td><td>Film Description</td></tr>
+	<tr><td> Film Name</td><td>Film Description</td><td>Release Year</td></tr>
 		<c:forEach items="${listaFilms}" var="film">
 			<tr><td><a href="films-actors?filmId=${film.filmId}">${film.title}</a></td>
-			<td>${film.description}</td></tr>
+			<td>${film.description}</td><td>${film.releaseYear}</td></tr>
 		</c:forEach>
 		</table>
 	</c:if>
