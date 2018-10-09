@@ -21,6 +21,7 @@ public class ActorDaoImpl extends NamedParameterJdbcDaoSupport implements ActorD
 			" WHERE f.film_id= :idFilm";
 	
 	private final String GET_ACTOR_BY_ACTOR_ID="SELECT * FROM actor WHERE actor_id= :actorId";
+	
 	private final String GET_ACTORS_BY_LAST_NAME = "SELECT * FROM actor "
 			+ "WHERE actor.last_name LIKE :lastName";
 	
