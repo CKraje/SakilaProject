@@ -12,11 +12,13 @@
 			<input type="text" name="film_Name" placeholder="inserisci nome film">
 			<button type="submit">Search Films by name</button>
 		</form>
+		
 		<form action="actors-search">
 			<input type="text" name="actorLastName"
 				placeholder="inserisci cognome attore">
 			<button type="submit">Search Actors</button>
 		</form>
+		
 		<form action="categories-films">
 			<select name="Genres">
 				<c:forEach items="${listaCategoriesFilms}" var="categoria">
@@ -26,6 +28,7 @@
 			</select>
 			<button type="submit">Search Films By Category</button>
 		</form>
+		
 	<c:if test="${!empty actorList }">
 		<c:forEach items="${actorList}" var="attore">
 			<a href="actors-films?actorId=${attore.actorId}">${attore.firstName}
@@ -33,6 +36,7 @@
 			<br>
 		</c:forEach>
 	</c:if>
+	
 	<c:if test="${!empty listaFilms }">
 	<table>
 	<tr><td> Film Name</td><td>Film Description</td><td>Release Year</td></tr>
