@@ -11,20 +11,19 @@ import it.objectmethod.sakila.domain.Actor;
 
 public class ActorDaoImpl extends NamedParameterJdbcDaoSupport implements ActorDao{
 
-	private final String GET_ACTORS_BY_FILM = "SELECT f.title, f.release_year, c.name,e.first_name,e.last_name,"
-			+ "e.actor_id "
-			+ "FROM  film  as f " + 
+	private final String GET_ACTORS_BY_FILM = "SELECT f.title, f.release_year, c.name,e.first_name,"
+			+ "e.last_name,e.actor_id FROM  film  as f " + 
 			"JOIN film_category ON film_category.film_id= f.film_id" + 
 			" JOIN category as c  ON film_category.category_id=c.category_id" + 
 			" JOIN film_actor as d ON d.film_id=f.film_id" + 
 			" JOIN actor as e ON d.actor_id=e.actor_id" + 
 			" WHERE f.film_id= :idFilm";
-	
+
 	private final String GET_ACTOR_BY_ACTOR_ID="SELECT * FROM actor WHERE actor_id= :actorId";
-	
+
 	private final String GET_ACTORS_BY_LAST_NAME = "SELECT * FROM actor "
 			+ "WHERE actor.last_name LIKE :lastName";
-	
+
 	@Override
 	public List<Actor> getActorsByFilm(int idFilm) {
 		List<Actor> actorList=null;
@@ -49,10 +48,10 @@ public class ActorDaoImpl extends NamedParameterJdbcDaoSupport implements ActorD
 	public List<Actor> getActorsByLastName(String actorLastName) {
 		List<Actor> actorList=null;
 		if(!(actorLastName.equals(""))) {
-		MapSqlParameterSource map = new MapSqlParameterSource();
-		map.addValue("lastName", actorLastName+"%");
-		BeanPropertyRowMapper<Actor> rm = new BeanPropertyRowMapper<>(Actor.class);
-		actorList=getNamedParameterJdbcTemplate().query(GET_ACTORS_BY_LAST_NAME,map,rm);
+			MapSqlParameterSource map = new MapSqlParameterSource();
+			map.addValue("lastName", actorLastName+"%");
+			BeanPropertyRowMapper<Actor> rm = new BeanPropertyRowMapper<>(Actor.class);
+			actorList=getNamedParameterJdbcTemplate().query(GET_ACTORS_BY_LAST_NAME,map,rm);
 		}
 		return actorList;
 	}

@@ -5,6 +5,7 @@ public class Film {
 	private String title;
 	private int releaseYear;
 	private String description;
+	
 	public String getFilmId() {
 		return filmId;
 	}

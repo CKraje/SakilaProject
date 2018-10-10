@@ -11,17 +11,17 @@ import it.objectmethod.sakila.domain.Category;
 
 public class CategoryDaoImpl extends NamedParameterJdbcDaoSupport implements CategoryDao{
 	private final String GET_ALL_CATEGORIES="SELECT name,last_update, category_id  FROM category ";
-	
+
 	private final String GET_CATEGORY_BY_ID="SELECT *FROM category  "
 			+ "WHERE category_id = :valore";
-	
+
 	public List<Category> getAllCategories() {
 		List<Category> listCategoriesFilms=null;
 		BeanPropertyRowMapper<Category> rm = new BeanPropertyRowMapper<>(Category.class);
 		listCategoriesFilms= getNamedParameterJdbcTemplate().query(GET_ALL_CATEGORIES, rm);
 		return listCategoriesFilms;
 	}
-	
+
 	public Category getCategoryById(int id) {
 		Category category = null;
 		MapSqlParameterSource map = new MapSqlParameterSource();

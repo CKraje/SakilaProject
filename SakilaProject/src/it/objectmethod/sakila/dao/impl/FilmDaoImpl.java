@@ -47,7 +47,7 @@ public class FilmDaoImpl extends NamedParameterJdbcDaoSupport implements FilmDao
 	@Override
 	public List<Film> getFilmsByName(String name) {
 		List<Film> listFilms=null;
-		if(/**name!=null ||*/ !(name.equals(""))) {
+		if(!(name.equals(""))) {
 		MapSqlParameterSource map = new MapSqlParameterSource();
 		map.addValue("name", name+"%");
 		BeanPropertyRowMapper<Film> rm = new BeanPropertyRowMapper<>(Film.class);

@@ -17,8 +17,8 @@ public class CategoryController {
 
 	@Autowired
 	CategoryDao categoryDao;
+
 	@RequestMapping("/categories")
-	
 	public String getAllCategories(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		List<Category> listcategoriesFilms= categoryDao.getAllCategories();

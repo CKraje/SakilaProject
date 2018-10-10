@@ -9,5 +9,4 @@ public interface FilmDao {
 	public List<Film> getFilmsByCategory(Category category);
 	public List<Film> getFilmsByActor(int idActor);
 	public List<Film> getFilmsByName(String name);
-
 }

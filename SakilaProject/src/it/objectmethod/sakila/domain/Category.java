@@ -4,6 +4,7 @@ public class Category {
 	private int categoryId;
 	private String name;
 	private String lastUpdate;
+	
 	public int getCategoryId() {
 		return categoryId;
 	}

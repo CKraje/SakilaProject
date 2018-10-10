@@ -8,5 +8,4 @@ public interface CategoryDao {
 
 		public List<Category> getAllCategories();
 		public Category getCategoryById(int id);
-		//public List<Integer> getAllCategoriesId() ;
 }

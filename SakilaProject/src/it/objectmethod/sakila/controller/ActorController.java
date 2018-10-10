@@ -20,16 +20,17 @@ public class ActorController {
 
 	@Autowired
 	ActorDao actorDao;
+
 	@Autowired
 	FilmDao filmDao;
-	
+
 	@RequestMapping("films-actors")
 	public String getActorsByFilm(ModelMap map,@RequestParam("filmId")int idFilm) {
 		List<Actor> actorList = actorDao.getActorsByFilm(idFilm);
 		map.addAttribute("actorList", actorList);
 		return "forward:/categories";
 	}
-	
+
 	@RequestMapping("actors-search")
 	public String getActorByLastName(ModelMap map,@RequestParam("actorLastName")String actorLastName
 			) {
