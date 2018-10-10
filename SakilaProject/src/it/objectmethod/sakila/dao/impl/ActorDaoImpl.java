@@ -48,10 +48,12 @@ public class ActorDaoImpl extends NamedParameterJdbcDaoSupport implements ActorD
 	@Override
 	public List<Actor> getActorsByLastName(String actorLastName) {
 		List<Actor> actorList=null;
+		if(!(actorLastName.equals(""))) {
 		MapSqlParameterSource map = new MapSqlParameterSource();
 		map.addValue("lastName", actorLastName+"%");
 		BeanPropertyRowMapper<Actor> rm = new BeanPropertyRowMapper<>(Actor.class);
 		actorList=getNamedParameterJdbcTemplate().query(GET_ACTORS_BY_LAST_NAME,map,rm);
+		}
 		return actorList;
 	}
 
